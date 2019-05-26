@@ -1,10 +1,12 @@
 package xyz.minhazav.strayphone;
 
+import java.util.ArrayList;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,9 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    final int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    private String SMSPermission = "android.permission.READ_SMS";
+    private TextView mSMSView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +30,6 @@ public class DashboardActivity extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +39,9 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mSMSView = (TextView) findViewById(R.id.tv_smsview);
+        renderSMSToScreen();
     }
 
     @Override
@@ -68,7 +70,7 @@ public class DashboardActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            openSettingActivity();
         }
 
         return super.onOptionsItemSelected(item);
@@ -80,22 +82,46 @@ public class DashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_manage) {
+            openSettingActivity();
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            //// TODO: impelemnt this @priority:low
+            showNotImplementedToast();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void renderSMSToScreen() {
+        //// Get permission
+        //// TODO: add handler if the permission is not granted. Also, take care of do not
+        //// this again warning
+        if (ContextCompat.checkSelfPermission(getBaseContext(), SMSPermission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{SMSPermission}, REQUEST_CODE_ASK_PERMISSIONS);
+        }
+
+        ArrayList<SMSDataModel> smsSoFar = SMSDataProvider.Instance().getAllSMSInInbox(this);
+        if (smsSoFar.size() == 0) {
+            mSMSView.setText("No SMS in inbox");
+        } else {
+            mSMSView.setText("");
+            for (SMSDataModel sms: smsSoFar) {
+                mSMSView.append(sms.body +"\n\n");
+            }
+        }
+    }
+
+    private void openSettingActivity() {
+        Intent openSettingIntent = new Intent(this, SettingActivity.class);
+        startActivity(openSettingIntent);
+    }
+
+    private void showNotImplementedToast() {
+        Toast.makeText(
+            getApplicationContext(),
+            "Not Implemented",
+            Toast.LENGTH_LONG).show();
     }
 }
