@@ -8,11 +8,24 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DashboardActivity"
     tools:showIn="@layout/app_bar_dashboard">
-    <TextView
-        android:id="@+id/tv_smsview"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="SMS Will show up here"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/tv_smsview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SMS Will show up here"/>
 
+        <Button
+            android:id="@+id/bt_test_slackIntegration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Slack Test"
+            android:layout_marginTop="20dp"
+            android:onClick="onSlackTestButtonClicked"
+            android:visibility="gone"/>
+    </LinearLayout>
 </ScrollView>

@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +24,9 @@ public class DashboardActivity extends AppCompatActivity
 
     final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private String SMSPermission = "android.permission.READ_SMS";
+
     private TextView mSMSView;
+    private Button btSlackTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,22 @@ public class DashboardActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mSMSView = (TextView) findViewById(R.id.tv_smsview);
+        btSlackTest = findViewById(R.id.bt_test_slackIntegration);
+        mSMSView = findViewById(R.id.tv_smsview);
         renderSMSToScreen();
+    }
+
+    /**
+     * TODO: this is a temporary test method. Please remove.
+     * @param view
+     */
+    public void onSlackTestButtonClicked(View view) {
+        Toast.makeText(view.getContext(), "Testing Slack API", Toast.LENGTH_LONG).show();
+
+        String dummyWebhookURL = "";
+        for (SMSDataModel sms: SMSDataProvider.Instance().getAllSMSInInbox(this)) {
+            new AsyncSlack(this, dummyWebhookURL).execute(sms);
+        }
     }
 
     @Override
@@ -110,6 +128,8 @@ public class DashboardActivity extends AppCompatActivity
             for (SMSDataModel sms: smsSoFar) {
                 mSMSView.append(sms.body +"\n\n");
             }
+
+            btSlackTest.setVisibility(View.VISIBLE);
         }
     }
 

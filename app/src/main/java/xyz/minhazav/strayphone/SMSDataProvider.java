@@ -68,6 +68,11 @@ public class SMSDataProvider implements ISMSProvider
     }
 
     private Cursor getSMSCursor(Activity activity) {
-        return activity.getContentResolver().query(this.smsInboxURI, null, null, null, null);
+        return activity.getContentResolver().query(
+                this.smsInboxURI,
+                null,
+                null,
+                null,
+                null);
     }
 }
