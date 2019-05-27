@@ -13,6 +13,8 @@ import android.net.Uri;
  * If it's not, then reactively load. @priority low
  *
  * TODO: implement the get count method, and optimize it
+ *
+ * TODO: this interface may not be required. Remove once obsolete
  */
 public class SMSDataProvider implements ISMSProvider
 {

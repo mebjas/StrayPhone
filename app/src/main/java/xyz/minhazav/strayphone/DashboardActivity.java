@@ -112,6 +112,7 @@ public class DashboardActivity extends AppCompatActivity
         return true;
     }
 
+    //// TODO: remove this method
     private void renderSMSToScreen() {
         //// Get permission
         //// TODO: add handler if the permission is not granted. Also, take care of do not

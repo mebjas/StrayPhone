@@ -3,6 +3,9 @@ package xyz.minhazav.strayphone;
 import java.util.ArrayList;
 import android.app.Activity;
 
+/**
+ * TODO: this interface may not be required. Remove once obsolete
+ */
 public interface ISMSProvider {
     /**
      * Total count of messages in inbox
