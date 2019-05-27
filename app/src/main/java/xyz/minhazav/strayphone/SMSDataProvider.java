@@ -16,8 +16,7 @@ import android.net.Uri;
  *
  * TODO: this interface may not be required. Remove once obsolete
  */
-public class SMSDataProvider implements ISMSProvider
-{
+public class SMSDataProvider implements ISMSProvider {
     private static SMSDataProvider instance = null;
     private String inboxPath = "content://sms/inbox";
     private String subjectColumnName = "subject";

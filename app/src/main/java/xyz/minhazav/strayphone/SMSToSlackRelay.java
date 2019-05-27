@@ -7,8 +7,7 @@ import okhttp3.RequestBody;
 /**
  * SMS to slack
  */
-public class SMSToSlackRelay extends AbstractSMSHttpRelay implements ISMSRelay
-{
+public class SMSToSlackRelay extends AbstractSMSHttpRelay implements ISMSRelay {
     /**
      * JSON Media type
      */
@@ -24,8 +23,7 @@ public class SMSToSlackRelay extends AbstractSMSHttpRelay implements ISMSRelay
      */
     private String webhookURL = null;
 
-    public SMSToSlackRelay(String webhookUrl)
-    {
+    public SMSToSlackRelay(String webhookUrl) {
         webhookURL = webhookURL;
     }
 
@@ -35,8 +33,7 @@ public class SMSToSlackRelay extends AbstractSMSHttpRelay implements ISMSRelay
      * @return request object
      */
     @Override
-    public Request createRequest(SMSDataModel sms)
-    {
+    public Request createRequest(SMSDataModel sms) {
         String encodedSlackMessage = "{\"text\":\"" +sms.body +"\"}";
         RequestBody requestBody = RequestBody.create(JSON, encodedSlackMessage);
         Request request = new Request.Builder()

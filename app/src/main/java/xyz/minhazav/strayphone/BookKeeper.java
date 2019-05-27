@@ -6,8 +6,7 @@ import java.util.Date;
 /**
  * Method for logging statistics to Data Base and reading from it
  */
-public class BookKeeper
-{
+public class BookKeeper {
     /**
      * Instance of sms relay book keeper
      */
@@ -20,8 +19,7 @@ public class BookKeeper
      * @param hits number of hits
      * @param datetime date time of insertion
      */
-    private void Insert(String feature, String namespace, Integer hits, Date datetime)
-    {
+    private void Insert(String feature, String namespace, Integer hits, Date datetime) {
         throw new UnsupportedOperationException();
     }
 
@@ -30,8 +28,7 @@ public class BookKeeper
      * @param feature name of feature
      * @param namespace namespace within feature name
      */
-    public void Insert(String feature, String namespace)
-    {
+    public void Insert(String feature, String namespace) {
         Insert(feature, namespace, 1, new Date(System.currentTimeMillis()));
     }
 
@@ -39,8 +36,7 @@ public class BookKeeper
      * Method to get list of all features in DB
      * @return list of all features in DB
      */
-    public ArrayList<String> GetFeatures()
-    {
+    public ArrayList<String> GetFeatures() {
         throw new UnsupportedOperationException();
     }
 
@@ -66,8 +62,7 @@ public class BookKeeper
     /***
      * Class to define SMS Relay book keeper
      */
-    public class SMSRelayBookKeeper
-    {
+    public class SMSRelayBookKeeper {
         /**
          * Name of the feature
          */
@@ -77,8 +72,7 @@ public class BookKeeper
          * Logs a hit into namespace
          * @param relayName name of relay, acts as namespace here
          */
-        public void Log(String relayName)
-        {
+        public void Log(String relayName) {
             Insert(FEATURE, relayName);
         }
     }

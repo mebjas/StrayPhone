@@ -19,7 +19,7 @@ public abstract class AbstractSMSHttpRelay implements ISMSHttpRelay {
         Request request = this.createRequest(sms);
         OkHttpClient client = new OkHttpClient();
 
-        try{
+        try {
             Response response = client.newCall(request).execute();
             String body = response.body().string();
             Log.d("TestLog", body);
