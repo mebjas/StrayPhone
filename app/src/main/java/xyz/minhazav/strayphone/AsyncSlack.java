@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import xyz.minhazav.strayphone.Relays.SMSDataModel;
 
 //// todo: remove the direct method and bind with SMS Broadcast handler
 public class AsyncSlack extends AsyncTask<SMSDataModel, Integer, Integer>

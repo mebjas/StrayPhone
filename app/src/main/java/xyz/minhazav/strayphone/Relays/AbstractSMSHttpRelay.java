@@ -1,4 +1,4 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 import android.util.Log;
 import java.io.IOException;

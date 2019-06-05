@@ -1,4 +1,4 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 /**
  * Defines data model for SMS

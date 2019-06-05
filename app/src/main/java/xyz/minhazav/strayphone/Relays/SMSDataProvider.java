@@ -1,8 +1,7 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 import java.util.ArrayList;
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 

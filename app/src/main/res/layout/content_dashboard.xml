@@ -27,5 +27,27 @@
             android:layout_marginTop="20dp"
             android:onClick="onSlackTestButtonClicked"
             android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/et_tmp_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_tmp_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bt_tmp_save_to_db"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add to DB"
+            android:layout_marginTop="20dp"
+            android:onClick="onBTSaveTMPClicked"/>
+        <TextView
+            android:id="@+id/tv_tmp_data_from_db"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data from db will show up here..."/>
+
     </LinearLayout>
 </ScrollView>

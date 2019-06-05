@@ -1,4 +1,4 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 import java.util.ArrayList;
 import android.app.Activity;

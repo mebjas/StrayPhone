@@ -1,4 +1,4 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 /**
  * interface defines Relay client for SMS

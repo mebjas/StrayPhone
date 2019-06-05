@@ -1,6 +1,8 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 import java.util.ArrayList;
+
+import xyz.minhazav.strayphone.Bookkeeper.BookKeeper;
 
 /**
  * Relay client to publish the SMS to all registered relays
@@ -25,6 +27,7 @@ public class SMSRelayClient {
      * Private construcpor
      */
     private SMSRelayClient() {
+        //// TODO: add all registery here
     }
 
     /**

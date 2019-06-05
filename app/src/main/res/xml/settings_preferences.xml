@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_sms_relay_category_title" >
+        <CheckBoxPreference
+            android:title="@string/pref_sms_relay_enabled_title"
+            android:key="@string/pref_sms_relay_enabled_title"
+            android:defaultValue="@bool/pref_sms_relay_enabled_default_value"
+            android:summaryOn="@string/pref_sms_relay_enabled_summary_on"
+            android:summaryOff="@string/pref_sms_relay_enabled_summary_off"
+            android:icon="@drawable/ic_menu_send"/>
+    </PreferenceCategory>
+</PreferenceScreen>

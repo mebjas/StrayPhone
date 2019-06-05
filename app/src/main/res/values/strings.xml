@@ -7,4 +7,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="header_setting_smsforward">SMS Forwarder</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- preferences -->
+    <string name="pref_sms_relay_category_title">SMS Relay</string>
+    <string name="pref_sms_relay_enabled_title">SMS Relay Enabled</string>
+    <string name="pref_sms_relay_enabled_key">pref_sms_relay_enabled</string>
+    <string name="pref_sms_relay_enabled_summary_on">All SMS would be forwarded to configured relays</string>
+    <string name="pref_sms_relay_enabled_summary_off">Disabled</string>
 </resources>

@@ -1,6 +1,8 @@
 package xyz.minhazav.strayphone;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,14 +18,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import xyz.minhazav.strayphone.Database.AppDatabase;
+import xyz.minhazav.strayphone.Database.SMSToSlackRelayDataModel;
+import xyz.minhazav.strayphone.Relays.SMSDataModel;
+import xyz.minhazav.strayphone.Relays.SMSDataProvider;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-    private String SMSPermission = "android.permission.READ_SMS";
+    private final int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    private final String SMSPermission = "android.permission.READ_SMS";
 
     private TextView mSMSView;
     private Button btSlackTest;
@@ -47,6 +55,17 @@ public class DashboardActivity extends AppCompatActivity
         btSlackTest = findViewById(R.id.bt_test_slackIntegration);
         mSMSView = findViewById(R.id.tv_smsview);
         renderSMSToScreen();
+
+        //// TODO: remove content below, they are temp
+        mETNickName = findViewById(R.id.et_tmp_nickname);
+        mETURL = findViewById(R.id.et_tmp_url);
+        mBTSaveTMP = findViewById(R.id.bt_tmp_save_to_db);
+        mTVDataFromDB = findViewById(R.id.tv_tmp_data_from_db);
+    }
+
+    private void openSettingsActivity() {
+        Intent openSettingsActivityIntent = new Intent(this, SettingsActivity.class);
+        startActivity(openSettingsActivityIntent);
     }
 
     /**
@@ -88,7 +107,7 @@ public class DashboardActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            openSettingActivity();
+            openSettingsActivity();
         }
 
         return super.onOptionsItemSelected(item);
@@ -101,9 +120,9 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_manage) {
-            openSettingActivity();
+            openSettingsActivity();
         } else if (id == R.id.nav_share) {
-            //// TODO: impelemnt this @priority:low
+            //// TODO: implement this @priority:low
             showNotImplementedToast();
         }
 
@@ -134,15 +153,35 @@ public class DashboardActivity extends AppCompatActivity
         }
     }
 
-    private void openSettingActivity() {
-        Intent openSettingIntent = new Intent(this, SettingActivity.class);
-        startActivity(openSettingIntent);
-    }
-
     private void showNotImplementedToast() {
         Toast.makeText(
             getApplicationContext(),
             "Not Implemented",
             Toast.LENGTH_LONG).show();
+    }
+
+    //// TODO: remove content below
+    private EditText mETNickName, mETURL;
+    private Button mBTSaveTMP;
+    private TextView mTVDataFromDB;
+
+    public void onBTSaveTMPClicked(View view) {
+        String nickName = mETNickName.getText().toString();
+        String url = mETURL.getText().toString();
+        if (url != "" && nickName != "") {
+            SMSToSlackRelayDataModel data = new SMSToSlackRelayDataModel();
+            data.nickname = nickName;
+            data.url = url;
+            data.dateAdded = new Date();
+            AppDatabase.Instance(this).smsToSlackRelayDAO().insertAll(data);
+        }
+
+        mTVDataFromDB.setText("");
+        for (SMSToSlackRelayDataModel data: AppDatabase.Instance(this).smsToSlackRelayDAO().getAll()) {
+            mTVDataFromDB.append("nickname = " +data.nickname +", url = " +data.url +"\n\n\n");
+        }
+
+        //// TODO: get from DB
+        //// TODO: print to screen
     }
 }

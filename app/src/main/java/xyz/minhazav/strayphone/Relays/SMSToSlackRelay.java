@@ -1,4 +1,4 @@
-package xyz.minhazav.strayphone;
+package xyz.minhazav.strayphone.Relays;
 
 import okhttp3.MediaType;
 import okhttp3.Request;
