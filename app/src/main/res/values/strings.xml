@@ -6,13 +6,34 @@
     <string name="nav_header_subtitle">Let\'s find some use for these oldies.</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="header_setting_smsforward">SMS Forwarder</string>
+    <string name="action_add_relay">Add</string>
+
+    <!-- activity titles -->
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_about">About StrayPhone App</string>
+    <string name="title_activity_sms_relay_list">SMS Relays</string>
+    <string name="title_activity_add_sms_relay">Add SMS Relays</string>
 
     <!-- preferences -->
     <string name="pref_sms_relay_category_title">SMS Relay</string>
     <string name="pref_sms_relay_enabled_title">SMS Relay Enabled</string>
     <string name="pref_sms_relay_enabled_key">pref_sms_relay_enabled</string>
-    <string name="pref_sms_relay_enabled_summary_on">All SMS would be forwarded to configured relays</string>
+    <string name="pref_sms_relay_enabled_summary_on">Relays Enabled</string>
     <string name="pref_sms_relay_enabled_summary_off">Disabled</string>
+    <string name="pref_sms_relay_entry_key">pref_sms_relay_entry</string>
+    <string name="pref_sms_relay_entry_title">Add SMS Relays</string>
+    <string name="pref_sms_relay_entry_summary">Click to add or remove more relays</string>
+    <string name="pref_about_category_title">Other Settings</string>
+    <string name="pref_about_title">About StrayPhone App</string>
+
+    <!-- about page-->
+    <string name="text_about_app">
+        StrayPhone app is an open source project started as an Android Application. The goal
+        of this application is to make old Android Phone beneficial to owners. Current capabilities
+        include: \n\n
+        \t1. Forwarding all SMS to Slack (WIP).
+
+        \n\n\n
+        This app is released open source under MIT License.
+    </string>
 </resources>

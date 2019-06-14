@@ -3,12 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         android:title="@string/pref_sms_relay_category_title" >
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:title="@string/pref_sms_relay_enabled_title"
             android:key="@string/pref_sms_relay_enabled_title"
             android:defaultValue="@bool/pref_sms_relay_enabled_default_value"
             android:summaryOn="@string/pref_sms_relay_enabled_summary_on"
             android:summaryOff="@string/pref_sms_relay_enabled_summary_off"
-            android:icon="@drawable/ic_menu_send"/>
+            android:icon="@drawable/ic_speech_bubble"/>
+        <!-- TODO(mebjas) have following preference dependent on above one -->
+        <Preference
+            android:key="@string/pref_sms_relay_entry_key"
+            android:title="@string/pref_sms_relay_entry_title"
+            android:summary="@string/pref_sms_relay_entry_summary">
+            <intent
+                android:targetPackage="xyz.minhazav.strayphone"
+                android:targetClass="xyz.minhazav.strayphone.SMSRelaysListActivity"/>
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_about_category_title" >
+        <Preference
+            android:title="@string/pref_about_title"
+            android:icon="@drawable/ic_info_black_24dp">
+            <intent
+                android:targetPackage="xyz.minhazav.strayphone"
+                android:targetClass="xyz.minhazav.strayphone.AboutActivity" />
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>

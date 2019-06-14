@@ -63,24 +63,6 @@ public class DashboardActivity extends AppCompatActivity
         mTVDataFromDB = findViewById(R.id.tv_tmp_data_from_db);
     }
 
-    private void openSettingsActivity() {
-        Intent openSettingsActivityIntent = new Intent(this, SettingsActivity.class);
-        startActivity(openSettingsActivityIntent);
-    }
-
-    /**
-     * TODO: this is a temporary test method. Please remove.
-     * @param view
-     */
-    public void onSlackTestButtonClicked(View view) {
-        Toast.makeText(view.getContext(), "Testing Slack API", Toast.LENGTH_LONG).show();
-
-        String dummyWebhookURL = "";
-        for (SMSDataModel sms: SMSDataProvider.Instance().getAllSMSInInbox(this)) {
-            new AsyncSlack(this, dummyWebhookURL).execute(sms);
-        }
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,6 +90,9 @@ public class DashboardActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             openSettingsActivity();
+        } else if (id == R.id.action_temp_open_sms_relay) {
+            // TODO(mebjas) - remove this condition and menu, it's temp
+            startActivity(new Intent(this, SMSRelaysListActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -129,6 +114,24 @@ public class DashboardActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openSettingsActivity() {
+        Intent openSettingsActivityIntent = new Intent(this, SettingsActivity.class);
+        startActivity(openSettingsActivityIntent);
+    }
+
+    /**
+     * TODO: this is a temporary test method. Please remove.
+     * @param view
+     */
+    public void onSlackTestButtonClicked(View view) {
+        Toast.makeText(view.getContext(), "Testing Slack API", Toast.LENGTH_LONG).show();
+
+        String dummyWebhookURL = "";
+        for (SMSDataModel sms: SMSDataProvider.Instance().getAllSMSInInbox(this)) {
+            new AsyncSlack(this, dummyWebhookURL).execute(sms);
+        }
     }
 
     //// TODO: remove this method
