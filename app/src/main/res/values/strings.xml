@@ -26,6 +26,14 @@
     <string name="pref_about_category_title">Other Settings</string>
     <string name="pref_about_title">About StrayPhone App</string>
 
+    <!-- SMS relays strings -->
+    <string name="sms_relays_hint_nickname">Nickname</string>
+    <string name="sms_relays_hint_url">URL</string>
+    <string name="sms_relays_button_add_text">Add</string>
+    <string name="sms_relays_button_cancel_text">Cancel</string>
+    <string name="sms_relays_error_message_already_exists">Nickname already exists!</string>
+    <string name="sms_relays_error_message_invalid_input">Invalid input, fill correctly!</string>
+
     <!-- about page-->
     <string name="text_about_app">
         StrayPhone app is an open source project started as an Android Application. The goal

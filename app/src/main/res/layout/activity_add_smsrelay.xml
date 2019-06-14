@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddSMSRelayActivity">
-
-</android.support.constraint.ConstraintLayout>
+    android:orientation="vertical"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:id="@+id/et_nickname"
+        android:hint="@string/sms_relays_hint_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- TODO(mebjas) - remove the text below -->
+    <EditText
+        android:id="@+id/et_url"
+        android:hint="@string/sms_relays_hint_url"
+        android:inputType="textUri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://slack.com"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <Button
+            android:id="@+id/bt_add"
+            android:text="@string/sms_relays_button_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onAddClicked"/>
+        <Button
+            android:id="@+id/bt_cancel"
+            android:text="@string/sms_relays_button_cancel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCancelClicked"/>
+    </LinearLayout>
+</LinearLayout>

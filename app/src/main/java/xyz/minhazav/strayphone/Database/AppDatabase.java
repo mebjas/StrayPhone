@@ -5,11 +5,13 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.TypeConverters;
 
+import xyz.minhazav.strayphone.Relays.RelayCategoryConvertor;
+
 /**
  * Singleton database class this application
  */
 @Database(entities = {SMSToSlackRelayDataModel.class}, version = 1)
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, RelayCategoryConvertor.class})
 public abstract class AppDatabase extends android.arch.persistence.room.RoomDatabase {
 
     private static final String DATABASENAME = "strayphone-db";
@@ -28,6 +30,8 @@ public abstract class AppDatabase extends android.arch.persistence.room.RoomData
                         activity.getApplicationContext(),
                         AppDatabase.class,
                         DATABASENAME)
+                        // TODO(mebjas) - remove this
+                        .allowMainThreadQueries()
                         .build();
             }
         }

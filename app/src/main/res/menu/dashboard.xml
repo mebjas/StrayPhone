@@ -6,11 +6,13 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="always"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
         android:iconTint="@color/colorPrimary"/>
+    <!-- TODO(mebjas) - remove this item -->
     <item
         android:id="@+id/action_temp_open_sms_relay"
         android:orderInCategory="100"
         android:title="+ relay"
+        android:icon="@drawable/ic_feedback_white_24dp"
         app:showAsAction="always"/>
 </menu>
