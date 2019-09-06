@@ -1,4 +1,6 @@
 # StrayPhone
+## **Deprecating in favour of [mebjas/MirrorDroid](https://github.com/mebjas/MirrorDroid)**
+
 Android application to make use of stray android phones you cannot just let go!
 
 # Features
